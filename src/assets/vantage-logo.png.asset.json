@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "7ae1b03a-b97c-49d4-a2de-37c5021bdb59",
+  "asset_id": "02409830-37da-4cd7-8e0c-d3751d47141d",
   "project_id": "1f16143d-5f88-40af-a98c-e8a927f8626d",
-  "url": "/__l5e/assets-v1/7ae1b03a-b97c-49d4-a2de-37c5021bdb59/vantage-logo.png",
-  "r2_key": "a/v1/1f16143d-5f88-40af-a98c-e8a927f8626d/7ae1b03a-b97c-49d4-a2de-37c5021bdb59/vantage-logo.png",
-  "original_filename": "vantage-logo.png",
-  "size": 14082,
-  "content_type": "image/png",
-  "created_at": "2026-07-05T17:26:53Z"
+  "url": "/__l5e/assets-v1/02409830-37da-4cd7-8e0c-d3751d47141d/vantage-logo.svg",
+  "r2_key": "a/v1/1f16143d-5f88-40af-a98c-e8a927f8626d/02409830-37da-4cd7-8e0c-d3751d47141d/vantage-logo.svg",
+  "original_filename": "vantage-logo.svg",
+  "size": 923,
+  "content_type": "image/svg+xml",
+  "created_at": "2026-07-05T21:01:35Z"
 }

@@ -56,7 +56,7 @@ function Nav() {
     <header className="animate-load-fade sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-md" style={{ animationDelay: "0ms" }}>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
         <a href="#top" className="flex items-center gap-2.5">
-          <img src={vantageLogo.url} alt="" className="h-7 w-7" />
+          <img src={vantageLogo.url} alt="" className="h-7 w-7 invert" />
           <span className="text-[0.95rem] font-semibold tracking-tight text-foreground">Vantage</span>
           <span className="hidden font-mono text-[0.68rem] uppercase tracking-[0.18em] text-meta sm:inline">
             / by RenderException
@@ -714,7 +714,7 @@ function Footer() {
     <footer className="mx-auto max-w-6xl px-6 py-10">
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div className="flex items-center gap-2.5">
-          <img src={vantageLogo.url} alt="" className="h-5 w-5" />
+          <img src={vantageLogo.url} alt="" className="h-5 w-5 invert" />
           <span className="text-sm font-semibold text-foreground">Vantage</span>
           <span className="font-mono text-[0.68rem] text-meta">
             © {new Date().getFullYear()} · A RenderException project
