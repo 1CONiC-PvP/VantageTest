@@ -741,6 +741,91 @@ function Footer() {
   );
 }
 
+/* ---------- Why Vantage ---------- */
+function WhyVantage() {
+  const rows = [
+    { cap: "Task definition", appium: "Code + element locators", vantage: "Plain-English task" },
+    { cap: "Screen understanding", appium: "Fixed IDs / XPath", vantage: "Vision model reads the screen" },
+    { cap: "Survives UI redesigns", appium: "Scripts break, need rewrites", vantage: "Adapts automatically" },
+    { cap: "Parallel scale", appium: "Bring your own grid", vantage: "Built-in fleet, 10 → 100 sessions" },
+    { cap: "Crash detection", appium: "Assertions only", vantage: "Ground-truth logcat monitoring" },
+    { cap: "Reasoning visibility", appium: "Black-box execution", vantage: "Live reasoning trace, step by step" },
+    { cap: "Getting started", appium: "Drivers, capabilities, locators", vantage: "Point at an APK or a URL" },
+  ];
+
+  const XBadge = () => (
+    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-crit-bg text-crit">
+      <X size={14} strokeWidth={2.5} />
+    </span>
+  );
+  const CheckBadge = () => (
+    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-bg text-accent">
+      <Check size={14} strokeWidth={2.5} />
+    </span>
+  );
+
+  return (
+    <section id="why" className="border-b border-border">
+      <div className="mx-auto max-w-6xl px-6 py-20">
+        <Reveal>
+          <Eyebrow>Why Vantage</Eyebrow>
+        </Reveal>
+        <Reveal delay={80}>
+          <h2 className="mt-4 max-w-2xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Appium runs a script. Vantage runs an agent.
+          </h2>
+        </Reveal>
+        <Reveal delay={140}>
+          <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
+            Same job. Completely different approach.
+          </p>
+        </Reveal>
+
+        <div className="mt-10 overflow-x-auto">
+          <div className="relative min-w-[640px] overflow-hidden rounded-2xl border border-border bg-surface">
+            <span className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
+
+            {/* Header row */}
+            <div className="grid grid-cols-[1.2fr_1fr_1fr] border-b border-border">
+              <div className="px-5 py-4 font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                Capability
+              </div>
+              <div className="px-5 py-4 font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                Appium
+              </div>
+              <div className="bg-accent-bg px-5 py-4 font-mono text-xs uppercase tracking-wider text-accent">
+                Vantage
+              </div>
+            </div>
+
+            {/* Data rows */}
+            {rows.map((r, i) => (
+              <Reveal key={r.cap} delay={i * 60}>
+                <div
+                  className={
+                    "grid grid-cols-[1.2fr_1fr_1fr] " +
+                    (i < rows.length - 1 ? "border-b border-border" : "")
+                  }
+                >
+                  <div className="px-5 py-4 text-sm font-medium text-foreground">{r.cap}</div>
+                  <div className="flex items-start gap-3 px-5 py-4 text-sm text-muted-foreground">
+                    <XBadge />
+                    <span className="pt-0.5">{r.appium}</span>
+                  </div>
+                  <div className="flex items-start gap-3 bg-accent-bg px-5 py-4 text-sm text-foreground">
+                    <CheckBadge />
+                    <span className="pt-0.5">{r.vantage}</span>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- Bits ---------- */
 function Eyebrow({
   children,
