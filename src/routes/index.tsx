@@ -39,6 +39,7 @@ function Landing() {
       <Hero />
       <StatStrip />
       <Features />
+      <WhyVantage />
       <HowItWorks />
       <Architecture />
       <InputTypes />
