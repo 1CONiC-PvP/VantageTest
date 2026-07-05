@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef } from "react";
+import { Check, X } from "lucide-react";
 import vantageLogo from "@/assets/vantage-logo.png.asset.json";
 import reLogo from "@/assets/re-logo.png.asset.json";
 import { Reveal, RevealText } from "@/components/reveal";
