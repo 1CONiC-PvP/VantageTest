@@ -64,6 +64,7 @@ function Nav() {
         </a>
         <nav className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
           <a href="#features" className="transition-colors hover:text-foreground">Features</a>
+          <a href="#why" className="transition-colors hover:text-foreground">Why us</a>
           <a href="#how" className="transition-colors hover:text-foreground">How it works</a>
           <a href="#architecture" className="transition-colors hover:text-foreground">Architecture</a>
           <a href="#roadmap" className="transition-colors hover:text-foreground">Roadmap</a>
