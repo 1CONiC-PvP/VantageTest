@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import vantageLogo from "../assets/vantage-logo.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { useLenis } from "../hooks/use-scroll-fx";
 
