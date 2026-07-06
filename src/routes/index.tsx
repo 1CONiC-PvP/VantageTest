@@ -453,38 +453,42 @@ function HowItWorks() {
   );
 }
 
-/* ---------- Architecture diagram ---------- */
-function ArchitectureDiagram() {
+/* ---------- Architecture flow ---------- */
+function ArchitectureFlow() {
+  const stages = [
+    { title: "New session input", subtitle: "Plain-English task + APK or URL" },
+    { title: "Fleet control plane", subtitle: "Scheduler, dashboard, autoscale" },
+    { title: "Android pod fleet", subtitle: "redroid + agent, scales to 100", stacked: true },
+    { title: "Storage & results", subtitle: "Screenshots, logs, verdicts" },
+  ];
+
   return (
-    <svg
-      viewBox="0 0 380 372"
-      className="mx-auto w-full max-w-sm"
-      role="img"
-      aria-label="Flow diagram: New session input leads to the Fleet control plane, which fans out to an Android pod fleet that scales to 100 parallel instances, converging into Storage and results."
-    >
-      <defs>
-        <marker id="arch-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </marker>
-      </defs>
-      <rect x="50" y="20" width="280" height="56" rx="8" className="fill-surface stroke-border" strokeWidth="0.5" />
-      <text x="190" y="38" textAnchor="middle" dominantBaseline="central" className="fill-foreground text-sm font-semibold">New session input</text>
-      <text x="190" y="56" textAnchor="middle" dominantBaseline="central" className="fill-muted-foreground text-[0.7rem]">Plain-English task + APK or URL</text>
-      <line x1="190" y1="76" x2="190" y2="108" className="stroke-border-soft" strokeWidth="1.5" markerEnd="url(#arch-arrow)" />
-      <rect x="50" y="108" width="280" height="56" rx="8" className="fill-surface stroke-border" strokeWidth="0.5" />
-      <text x="190" y="126" textAnchor="middle" dominantBaseline="central" className="fill-foreground text-sm font-semibold">Fleet control plane</text>
-      <text x="190" y="144" textAnchor="middle" dominantBaseline="central" className="fill-muted-foreground text-[0.7rem]">Scheduler, dashboard, autoscale</text>
-      <line x1="190" y1="164" x2="190" y2="196" className="stroke-border-soft" strokeWidth="1.5" markerEnd="url(#arch-arrow)" />
-      <rect x="62" y="208" width="280" height="56" rx="8" className="fill-accent-bg stroke-accent" strokeWidth="0.5" opacity="0.3" />
-      <rect x="56" y="202" width="280" height="56" rx="8" className="fill-accent-bg stroke-accent" strokeWidth="0.5" opacity="0.55" />
-      <rect x="50" y="196" width="280" height="56" rx="8" className="fill-accent-bg stroke-accent" strokeWidth="0.5" />
-      <text x="190" y="214" textAnchor="middle" dominantBaseline="central" className="fill-accent text-sm font-semibold">Android pod fleet</text>
-      <text x="190" y="232" textAnchor="middle" dominantBaseline="central" className="fill-muted-foreground text-[0.7rem]">redroid + agent, scales to 100</text>
-      <line x1="190" y1="264" x2="190" y2="296" className="stroke-border-soft" strokeWidth="1.5" markerEnd="url(#arch-arrow)" />
-      <rect x="50" y="296" width="280" height="56" rx="8" className="fill-surface stroke-border" strokeWidth="0.5" />
-      <text x="190" y="314" textAnchor="middle" dominantBaseline="central" className="fill-foreground text-sm font-semibold">Storage &amp; results</text>
-      <text x="190" y="332" textAnchor="middle" dominantBaseline="central" className="fill-muted-foreground text-[0.7rem]">Screenshots, logs, verdicts</text>
-    </svg>
+    <div className="mx-auto flex max-w-sm flex-col items-center px-4 py-8 sm:px-8">
+      {stages.map((stage, i) => (
+        <div key={stage.title} className="w-full">
+          <div className="relative">
+            {stage.stacked && (
+              <>
+                <div aria-hidden="true" className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl border border-border bg-surface opacity-30" />
+                <div aria-hidden="true" className="absolute inset-0 translate-x-1.5 translate-y-1.5 rounded-2xl border border-border bg-surface opacity-55" />
+              </>
+            )}
+            <div className="relative z-10 rounded-2xl border border-border bg-surface p-5 text-center hover-lift-accent">
+              <div className="font-semibold text-foreground">{stage.title}</div>
+              <div className="mt-1 text-sm text-muted-foreground">{stage.subtitle}</div>
+            </div>
+          </div>
+          {i < stages.length - 1 && (
+            <div className="flex justify-center py-2" aria-hidden="true">
+              <svg width="16" height="28" viewBox="0 0 16 28" className="text-border-soft">
+                <line x1="8" y1="0" x2="8" y2="20" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M8 26L3 18H13L8 26Z" fill="currentColor" />
+              </svg>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -520,7 +524,7 @@ function Architecture() {
               <span className="font-mono text-[0.65rem] text-meta">read-only</span>
             </div>
             <div className="px-4 py-8 sm:px-8">
-              <ArchitectureDiagram />
+              <ArchitectureFlow />
             </div>
           </div>
         </Reveal>
