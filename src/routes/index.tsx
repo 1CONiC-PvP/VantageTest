@@ -524,7 +524,7 @@ function Architecture() {
               <span className="font-mono text-[0.65rem] text-meta">read-only</span>
             </div>
             <div className="px-4 py-8 sm:px-8">
-              <ArchitectureDiagram />
+              <ArchitectureFlow />
             </div>
           </div>
         </Reveal>
