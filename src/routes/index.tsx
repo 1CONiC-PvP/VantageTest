@@ -102,7 +102,7 @@ function Hero() {
   return (
     <section id="top" className="grid-bg relative overflow-hidden border-b border-border">
       <div ref={gridRef} className="pointer-events-none absolute inset-0 -z-10" aria-hidden />
-      <div className="relative z-10 mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-[1.15fr_1fr] lg:py-28">
+      <div className="relative z-10 mx-auto grid max-w-6xl gap-12 px-6 py-20 max-sm:grid-cols-1 lg:grid-cols-[1.15fr_1fr] lg:py-28">
         <div>
           <div className="animate-load-fade-up" style={{ animationDelay: "80ms" }}>
             <Eyebrow>RenderException · Hackathon 2026</Eyebrow>
@@ -540,7 +540,7 @@ function InputTypes() {
             Point it at an APK — or a URL.
           </h2>
         </Reveal>
-        <div className="mt-10 grid gap-4 lg:grid-cols-2">
+        <div className="mt-10 grid gap-4 max-sm:grid-cols-1 lg:grid-cols-2">
           <Reveal delay={0}>
             <InputCard
               tag="APK"
