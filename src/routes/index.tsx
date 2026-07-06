@@ -453,26 +453,43 @@ function HowItWorks() {
   );
 }
 
+/* ---------- Architecture diagram ---------- */
+function ArchitectureDiagram() {
+  return (
+    <svg
+      viewBox="0 0 380 372"
+      className="mx-auto w-full max-w-sm"
+      role="img"
+      aria-label="Flow diagram: New session input leads to the Fleet control plane, which fans out to an Android pod fleet that scales to 100 parallel instances, converging into Storage and results."
+    >
+      <defs>
+        <marker id="arch-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </marker>
+      </defs>
+      <rect x="50" y="20" width="280" height="56" rx="8" className="fill-surface stroke-border" strokeWidth="0.5" />
+      <text x="190" y="38" textAnchor="middle" dominantBaseline="central" className="fill-foreground text-sm font-semibold">New session input</text>
+      <text x="190" y="56" textAnchor="middle" dominantBaseline="central" className="fill-muted-foreground text-[0.7rem]">Plain-English task + APK or URL</text>
+      <line x1="190" y1="76" x2="190" y2="108" className="stroke-border-soft" strokeWidth="1.5" markerEnd="url(#arch-arrow)" />
+      <rect x="50" y="108" width="280" height="56" rx="8" className="fill-surface stroke-border" strokeWidth="0.5" />
+      <text x="190" y="126" textAnchor="middle" dominantBaseline="central" className="fill-foreground text-sm font-semibold">Fleet control plane</text>
+      <text x="190" y="144" textAnchor="middle" dominantBaseline="central" className="fill-muted-foreground text-[0.7rem]">Scheduler, dashboard, autoscale</text>
+      <line x1="190" y1="164" x2="190" y2="196" className="stroke-border-soft" strokeWidth="1.5" markerEnd="url(#arch-arrow)" />
+      <rect x="62" y="208" width="280" height="56" rx="8" className="fill-accent-bg stroke-accent" strokeWidth="0.5" opacity="0.3" />
+      <rect x="56" y="202" width="280" height="56" rx="8" className="fill-accent-bg stroke-accent" strokeWidth="0.5" opacity="0.55" />
+      <rect x="50" y="196" width="280" height="56" rx="8" className="fill-accent-bg stroke-accent" strokeWidth="0.5" />
+      <text x="190" y="214" textAnchor="middle" dominantBaseline="central" className="fill-accent text-sm font-semibold">Android pod fleet</text>
+      <text x="190" y="232" textAnchor="middle" dominantBaseline="central" className="fill-muted-foreground text-[0.7rem]">redroid + agent, scales to 100</text>
+      <line x1="190" y1="264" x2="190" y2="296" className="stroke-border-soft" strokeWidth="1.5" markerEnd="url(#arch-arrow)" />
+      <rect x="50" y="296" width="280" height="56" rx="8" className="fill-surface stroke-border" strokeWidth="0.5" />
+      <text x="190" y="314" textAnchor="middle" dominantBaseline="central" className="fill-foreground text-sm font-semibold">Storage &amp; results</text>
+      <text x="190" y="332" textAnchor="middle" dominantBaseline="central" className="fill-muted-foreground text-[0.7rem]">Screenshots, logs, verdicts</text>
+    </svg>
+  );
+}
+
 /* ---------- Architecture ---------- */
 function Architecture() {
-  const diagram = `             +----------------+
-    People / |  New Session   |  APK or domain + task
-    CI       |  Input Form    |-----------------------+
-             +----------------+                       |
-                                                       v
-             +----------------+               +------------------+
-             |  Fleet         |<------------->|  Session         |
-             |  Dashboard     |               |  Scheduler       |  (queue, warm pool,
-             +----------------+               +--------+---------+   autoscaling)
-                                                       |
-                    +----------------------------------+----------------------------------+
-                    v                                  v                                  v
-             redroid pod                         redroid pod                         redroid pod   ... up to 100
-             + agent sidecar                     + agent sidecar                     + agent sidecar
-                    |                                  |                                  |
-                    +------------------> Object storage (screenshots, video, logs)
-                    +------------------> Results DB (pass/fail, traces, assertions)`;
-
   const components = [
     ["New Session Input", "Accept an APK upload or domain URL, plus a task description and device profile."],
     ["Session Scheduler", "Queue requests, maintain a warm pool of pre-booted Android boxes, autoscale."],
@@ -498,13 +515,13 @@ function Architecture() {
           <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-surface">
             <div className="flex items-center justify-between border-b border-border bg-background-2 px-4 py-2.5">
               <span className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-meta">
-                vantage · topology.txt
+                vantage · topology.svg
               </span>
               <span className="font-mono text-[0.65rem] text-meta">read-only</span>
             </div>
-            <pre className="overflow-x-auto px-4 py-5 font-mono text-[0.72rem] max-sm:text-[0.65rem] leading-relaxed text-muted-foreground">
-              {diagram}
-            </pre>
+            <div className="px-4 py-8 sm:px-8">
+              <ArchitectureDiagram />
+            </div>
           </div>
         </Reveal>
 
