@@ -502,7 +502,7 @@ function Architecture() {
               </span>
               <span className="font-mono text-[0.65rem] text-meta">read-only</span>
             </div>
-            <pre className="overflow-x-auto px-4 py-5 font-mono text-[0.72rem] leading-relaxed text-muted-foreground">
+            <pre className="overflow-x-auto px-4 py-5 font-mono text-[0.72rem] max-sm:text-[0.65rem] leading-relaxed text-muted-foreground">
               {diagram}
             </pre>
           </div>
@@ -588,10 +588,10 @@ function InputCard({
   const bg = tone === "violet" ? "bg-violet-bg" : "bg-accent-bg";
   return (
     <article className="overflow-hidden rounded-2xl border border-border bg-surface hover-lift">
-      <div className="flex items-center justify-between border-b border-border px-6 py-4">
+      <div className="flex items-center justify-between gap-3 border-b border-border px-6 py-4 max-sm:flex-wrap max-sm:items-start max-sm:gap-2">
         <span
           className={
-            "inline-flex items-center rounded-full px-2.5 py-1 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.14em] " +
+            "inline-flex shrink-0 items-center rounded-full px-2.5 py-1 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.14em] " +
             bg +
             " " +
             color
@@ -603,7 +603,7 @@ function InputCard({
       </div>
       <div className="px-6 py-5">
         <p className="text-sm leading-relaxed text-muted-foreground">{body}</p>
-        <pre className="mt-4 overflow-x-auto rounded-lg border border-border-soft bg-background-2 px-4 py-3 font-mono text-[0.75rem] leading-relaxed text-muted-foreground">
+        <pre className="mt-4 overflow-x-auto rounded-lg border border-border-soft bg-background-2 px-4 py-3 font-mono text-[0.75rem] max-sm:text-[0.65rem] leading-relaxed text-muted-foreground">
           {code}
         </pre>
       </div>
@@ -781,7 +781,39 @@ function WhyVantage() {
           </p>
         </Reveal>
 
-        <div className="mt-10 overflow-x-auto">
+        {/* Mobile: stacked cards per row */}
+        <div className="mt-10 space-y-3 sm:hidden">
+          {rows.map((r, i) => (
+            <Reveal key={r.cap} delay={i * 60}>
+              <div className="rounded-xl border border-border bg-surface p-4">
+                <div className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                  {r.cap}
+                </div>
+                <div className="mt-3 flex items-start gap-3 text-sm text-muted-foreground">
+                  <XBadge />
+                  <div className="min-w-0 flex-1">
+                    <div className="font-mono text-[0.65rem] uppercase tracking-wider text-meta">
+                      Appium
+                    </div>
+                    <div className="mt-0.5 break-words">{r.appium}</div>
+                  </div>
+                </div>
+                <div className="mt-3 flex items-start gap-3 rounded-lg bg-accent-bg p-3 text-sm text-foreground">
+                  <CheckBadge />
+                  <div className="min-w-0 flex-1">
+                    <div className="font-mono text-[0.65rem] uppercase tracking-wider text-accent">
+                      Vantage
+                    </div>
+                    <div className="mt-0.5 break-words">{r.vantage}</div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Desktop/tablet: original 3-column table */}
+        <div className="mt-10 hidden overflow-x-auto sm:block">
           <div className="relative min-w-[640px] overflow-hidden rounded-2xl border border-border bg-surface">
             <span className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
 
