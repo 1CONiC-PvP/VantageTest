@@ -515,13 +515,13 @@ function Architecture() {
           <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-surface">
             <div className="flex items-center justify-between border-b border-border bg-background-2 px-4 py-2.5">
               <span className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-meta">
-                vantage · topology.txt
+                vantage · topology.svg
               </span>
               <span className="font-mono text-[0.65rem] text-meta">read-only</span>
             </div>
-            <pre className="overflow-x-auto px-4 py-5 font-mono text-[0.72rem] max-sm:text-[0.65rem] leading-relaxed text-muted-foreground">
-              {diagram}
-            </pre>
+            <div className="px-4 py-8 sm:px-8">
+              <ArchitectureDiagram />
+            </div>
           </div>
         </Reveal>
 
